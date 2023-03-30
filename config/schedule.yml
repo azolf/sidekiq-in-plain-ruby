@@ -1,0 +1,8 @@
+# confie/schedule.yml
+
+sample:
+  cron: "* * * * *"
+  class: "Sample"
+  queue: default
+
+

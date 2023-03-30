@@ -1,0 +1,53 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activesupport (7.0.4.3)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
+    concurrent-ruby (1.2.2)
+    connection_pool (2.4.0)
+    et-orbi (1.2.7)
+      tzinfo
+    fugit (1.8.1)
+      et-orbi (~> 1, >= 1.2.7)
+      raabro (~> 1.4)
+    globalid (1.1.0)
+      activesupport (>= 5.0)
+    i18n (1.12.0)
+      concurrent-ruby (~> 1.0)
+    minitest (5.18.0)
+    raabro (1.4.0)
+    rack (3.0.7)
+    rack-session (2.0.0)
+      rack (>= 3.0.0)
+    rackup (2.1.0)
+      rack (>= 3)
+      webrick (~> 1.8)
+    redis-client (0.14.1)
+      connection_pool
+    sidekiq (7.0.7)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.11.0)
+    sidekiq-cron (1.10.0)
+      fugit (~> 1.8)
+      globalid (>= 1.0.1)
+      sidekiq (>= 6)
+    tzinfo (2.0.6)
+      concurrent-ruby (~> 1.0)
+    webrick (1.8.1)
+
+PLATFORMS
+  arm64-darwin-22
+
+DEPENDENCIES
+  rack-session
+  rackup
+  sidekiq
+  sidekiq-cron
+
+BUNDLED WITH
+   2.4.3
