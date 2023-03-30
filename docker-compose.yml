@@ -1,0 +1,33 @@
+version: '3'
+services:
+  redis:
+    image: redis:alpine
+  app:
+    build: .
+    command: bundle exec sidekiq -C /app/config/sidekiq_config.yml -r /app/crons.rb
+    environment:
+      - 'REDIS_PROVIDER=REDIS_URL'
+      - 'REDIS_URL=redis://redis:6379/1'
+    links:
+      - redis
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '100m'
+        max-file: '5'
+  web:
+    build: .
+    command: rackup lib/web/panel.ru -o 0.0.0.0 -p 9292
+    ports:
+      - 127.0.0.1:9292:9292
+    environment:
+      - 'REDIS_PROVIDER=REDIS_URL'
+      - 'REDIS_URL=redis://redis:6379/1'
+    links:
+      - redis
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '100m'
+        max-file: '5'
+
